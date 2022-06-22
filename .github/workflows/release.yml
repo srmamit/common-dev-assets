@@ -46,6 +46,9 @@ jobs:
           GIT_COMMITTER_NAME: ${{ steps.import-gpg.outputs.name }}
           GIT_COMMITTER_EMAIL: ${{ steps.import-gpg.outputs.email }}
         run: |
+          # Setup environment since GHA does not run the containers entrypoint
+          . /root/.bashrc
+          . /root/.profile
           make sem-release
 
       - id: versionNumber
@@ -55,6 +58,9 @@ jobs:
         env:
           SEMVER_VERSION: ${{ steps.versionNumber.outputs.version }}
         run: |
+          # Setup environment since GHA does not run the containers entrypoint
+          . /root/.bashrc
+          . /root/.profile
           if [ -z "$SEMVER_VERSION" ]
           then
             echo "No Release Version Set. Skip tagging"
