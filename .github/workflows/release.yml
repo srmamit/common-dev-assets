@@ -50,8 +50,10 @@ jobs:
           . /root/.bashrc
           . /root/.profile
           pwd
-          ls
-          make sem-release
+          ln -s /tmp/node_modules node_modules
+          ln -s /tmp/package-lock.json package-lock.json
+          ls -l
+          bash -c "npx semantic-release --no-ci";
 
       - id: versionNumber
         run: echo "::set-output name=version::$SEMVER_VERSION"
