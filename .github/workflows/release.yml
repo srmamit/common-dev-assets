@@ -50,9 +50,9 @@ jobs:
           . /root/.bashrc
           . /root/.profile
           pwd
-          ls -l
-          ln -s /tmp/node_modules node_modules
-          ln -s /tmp/package-lock.json package-lock.json
+          # ls -l
+          # ln -s /tmp/node_modules node_modules
+          # ln -s /tmp/package-lock.json package-lock.json
           ls -l
           bash -c "npx semantic-release --no-ci";
 
